@@ -1,6 +1,7 @@
 package com.main.v11t1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ContactStorage {
     private static ContactStorage instance = null;
@@ -30,16 +31,17 @@ public class ContactStorage {
     }
 
     public void sortByGroup() {
+        Iterator<Contact> iterator = contacts.iterator();
+        while (iterator.hasNext()) {
+            Contact contact = iterator.next();
+        }
         contacts.sort((c1, c2) -> {
-
             if (c1.getContactGroup().equals("Työ") && !c2.getContactGroup().equals("Työ")) {
                 return -1;
             }
-
             if (c2.getContactGroup().equals("Työ") && !c1.getContactGroup().equals("Työ")) {
                 return 1;
             }
-
             return c1.getFullName().compareToIgnoreCase(c2.getFullName());
         });
     }
